@@ -1,0 +1,19 @@
+Name:Theo
+Attack:Kick
+Defence capabilty:80
+
+Name:Marcos
+Attack:Speed
+Defence capabilty:40
+
+Name:Hector
+Attack:Water splash
+Defence capabilty:10
+
+Name:Jorge
+Attack:Dash
+Defence capabilty:70
+
+Name:Joao
+Attack:45
+Defence capabilty:34
