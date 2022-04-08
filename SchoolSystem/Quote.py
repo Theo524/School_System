@@ -1,3 +1,4 @@
+import os
 import random
 
 yes = ["yes", "Yes"]
@@ -8,7 +9,7 @@ def end():
     more = input("Do you want more quotes? ")
     if more in yes:
         b = random.randint(1,21)
-        text_file = open("\\School_system\\quotes.txt", "r")
+        text_file = open(os.getcwd() + "\\School_system\\quotes.txt", "r")
         a = text_file.read().splitlines()
         print(a[b])
         text_file.close()
@@ -28,7 +29,7 @@ def start():
 
     if choice in yes:
         b = random.randint(1,21)
-        text_file = open("\\School_system\\quotes.txt", "r")
+        text_file = open(os.getcwd() + "\\School_system\\quotes.txt", "r")
         a = text_file.read().splitlines()
         print(a[b])
         text_file.close()

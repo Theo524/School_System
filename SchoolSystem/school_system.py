@@ -111,7 +111,7 @@ def Mathsquiz():
         print("Great effort",Name,",you had {} questions right".format(score))
 
 
-        output_file=open("\\School_system\\Quizresults.txt", "a")
+        output_file=open(os.getcwd() + "\\School_system\\Quizresults.txt", "a")
         output_file.write(Name+"\n")
         output_file.write(str(score)+"\n")
         output_file.close()
@@ -142,7 +142,7 @@ def Mathsquiz():
                 print("Logged in")
                 print("You chosed option 2\n------------------------------------------------------------------")
                 found=False
-                input_file=open("\\School_system\\Quizresults.txt", "r")
+                input_file=open(os.getcwd() + "\\School_system\\Quizresults.txt", "r")
                 data=input_file.read().splitlines()
                 input_file.close()
                 search=input("Enter your name:")
@@ -192,14 +192,14 @@ def Mathsquiz():
                 print("Logged in")
                 print("You chosed option 3\n------------------------------------------------------------------")
                 found= False
-                input_file=open("\\School_system\\Quizresults.txt", "r")
+                input_file=open(os.getcwd() + "\\School_system\\Quizresults.txt", "r")
                 data=input_file.read().splitlines()
                 input_file.close()
                 search=input("Enter the name you are deleting: ")
                 position=0
                 while not found and position<=len(data)-1:
                     if data[position]==search:
-                        output_file=open("\\School_system\\Quizresults.txt", "w")
+                        output_file=open(os.getcwd() + "\\School_system\\Quizresults.txt", "w")
                         del(data[position])
                         del(data[position])
                         for item in data:
@@ -250,7 +250,7 @@ def Mathsquiz():
                 print("Logged in")
                 print("You chosed option 4\n-------------------------------------------------------------------")
                 found=False
-                input_file=open("\\School_system\\Quizresults.txt", "r")
+                input_file=open(os.getcwd() + "\\School_system\\Quizresults.txt", "r")
                 data=input_file.read().splitlines()
                 input_file.close
                 search=input("Enter the name you are looking for: ")
@@ -259,7 +259,7 @@ def Mathsquiz():
                 while not found and position<=len(data)-1:
                     if data[position]==search:
                         print(search," original score is ", data[position+1])
-                        output_file=open("\\School_system\\Quizresults.txt", "w")
+                        output_file=open(os.getcwd() + "\\School_system\\Quizresults.txt", "w")
                         data[position+2]=newScore
                         for item in data:
                             output_file.write(item+"\n")
@@ -342,7 +342,7 @@ def Songsquiz():
             count=0
             count+=1
             print("The quiz will now start.\n------------------------------------------------------------------\nREMEMBER ALL ANSWERS MUST BE IN CAPITAL LETTERS\n------------------------------------------------------------------")
-            input_file=open("\\School_system\\Songsquiz.txt", "r")
+            input_file=open(os.getcwd() + "\\School_system\\Songsquiz.txt", "r")
             data=input_file.read().splitlines()
             new_line = random.choice(data)
             input_file.close()
@@ -367,13 +367,13 @@ def Songsquiz():
             end = time.time()
             spent = end-start
             newscore = score
-            new_file=open("\\School_system\\Scores.txt", "a")
+            new_file=open(os.getcwd() + "\\School_system\\Scores.txt", "a")
             new_file.write("{},{},{} seconds\n".format(newscore, name, int(spent)))
             new_file.close()
             print("\nOk, "+name+", you scored",newscore)
     #ALL SCORES
             print("Here are the top five scores: \n")
-            with open("\\School_system\\Scores.txt") as file:
+            with open(os.getcwd() + "\\School_system\\Scores.txt") as file:
                 csv_reader = csv.reader(file)
                 sorted_list=sorted(csv_reader, key=lambda row: int(row[0]), reverse=True)
             print(" points/ ".join(sorted_list[0]))
@@ -739,7 +739,7 @@ def SnakesAndLadders():
     board=[[y+(x*7)+1 for y in range(7)] for x in range(7)]
 
     #update to read from file
-    file=open("\\School_system\\gameMessages.txt", "r")
+    file=open(os.getcwd() + "\\School_system\\gameMessages.txt", "r")
     messages=file.readlines()
     file.close()
 
@@ -781,7 +781,7 @@ def SnakesAndLadders():
             print("|\n")
 
     def loadObstacles():
-        file=open("\\School_system\\obstacles.txt", "r")
+        file=open(os.getcwd() + "\\School_system\\obstacles.txt", "r")
         #obstacles stored on seperate lines in the format Pos,Code,Move e.g. 48,S,-6
 
         obstacleArr=file.readlines()
@@ -4674,7 +4674,7 @@ def login():
     try:
         un=valInput("Please type in the username")
         password=valInput("Please type in the password")
-        file=open("\\School_system\\users.txt", "r")
+        file=open(os.getcwd() + "\\School_system\\users.txt", "r")
         users=file.readlines()
         for user in users:
             details=user.split(",")
@@ -4699,7 +4699,7 @@ def register():
         password=valInput("Please type in the password")
         cpassword=valInput("Please confirm your password")
 
-    file=open("\\School_system\\users.txt", "a")
+    file=open(os.getcwd() + "\\School_system\\users.txt", "a")
     file.write(un+","+password+",\n")
     file.close()
 
@@ -4765,7 +4765,7 @@ def addStudent():
     form=valInput("Please type in form group")
     studentID=1
     try:
-        file=open("\\School_system\\students.txt", "r")
+        file=open(os.getcwd() + "\\School_system\\students.txt", "r")
         students=file.readlines()
         lastID=int(students[-1].split(",")[0])
         studentID=lastID+1
@@ -4773,7 +4773,7 @@ def addStudent():
     except FileNotFoundError:
         pass #No students exist, start student ID at 1
 
-    file=open("\\School_system\\students.txt", "a")
+    file=open(os.getcwd() + "\\School_system\\students.txt", "a")
     file.write(str(studentID)+","+fn+","+ln+","+dob+","+gender+","+form+",\n")
     file.close()
 
@@ -4783,7 +4783,7 @@ def viewStudent():
     print("**************************")
     studentId=inpInt("Please type in the student ID")
     try:
-        file=open("\\School_system\\students.txt", "r")
+        file=open(os.getcwd() + "\\School_system\\students.txt", "r")
         found=False
         students=file.readlines()
         for student in students:
@@ -4804,7 +4804,7 @@ def reportsMenu():
     students=[]
     reportList=[]
     try:
-        file=open("\\School_system\\students.txt", "r")
+        file=open(os.getcwd() + "\\School_system\\students.txt", "r")
         found=False
         students=file.readlines()
     except FileNotFoundError:
